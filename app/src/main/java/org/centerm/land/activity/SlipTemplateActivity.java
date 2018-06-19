@@ -442,18 +442,31 @@ public class SlipTemplateActivity extends SettingToolbarActivity implements View
             /*appLabel.setText(item.getEmvAppLabel());
             tcLabel.setText(item.getEmvTc());
             aidLabel.setText(item.getEmvAid());*/
-            if (item.getEmvAppLabel().isEmpty()) {
-                appLabel.setText(item.getEmvAppLabel());
+            if (item.getEmvAppLabel() != null) {
+                if (item.getEmvAppLabel().isEmpty()) {
+                    appLabel.setText(item.getEmvAppLabel());
+                } else {
+                    appFrameLabel.setVisibility(View.GONE);
+                }
             } else {
                 appFrameLabel.setVisibility(View.GONE);
             }
-            if (item.getEmvTc().isEmpty()) {
-                tcLabel.setText(item.getEmvTc());
+
+            if (item.getEmvTc() != null) {
+                if (item.getEmvTc().isEmpty()) {
+                    tcLabel.setText(item.getEmvTc());
+                } else {
+                    tcFrameLayout.setVisibility(View.GONE);
+                }
             } else {
                 tcFrameLayout.setVisibility(View.GONE);
             }
-            if (item.getEmvAid().isEmpty()) {
-                aidLabel.setText(item.getEmvAid());
+            if (item.getEmvAid() != null) {
+                if (item.getEmvAid().isEmpty()) {
+                    aidLabel.setText(item.getEmvAid());
+                } else {
+                    aidFrameLayout.setVisibility(View.GONE);
+                }
             } else {
                 aidFrameLayout.setVisibility(View.GONE);
             }
@@ -630,18 +643,30 @@ public class SlipTemplateActivity extends SettingToolbarActivity implements View
             /*dateTaxLayoutAuto.setText(day + "/" + mount + "/" + year);
             timeTaxLayoutAuto.setText(item.getTransTime());*/
 
-            if (item.getEmvAppLabel().isEmpty()) {
-                appLabelAuto.setText(item.getEmvAppLabel());
+            if (item.getEmvAppLabel() != null) {
+                if (item.getEmvAppLabel().isEmpty()) {
+                    appLabelAuto.setText(item.getEmvAppLabel());
+                } else {
+                    appFrameLabelAuto.setVisibility(View.GONE);
+                }
             } else {
                 appFrameLabelAuto.setVisibility(View.GONE);
             }
-            if (item.getEmvTc().isEmpty()) {
-                tcLabelAuto.setText(item.getEmvTc());
+            if (item.getEmvTc() != null) {
+                if (item.getEmvTc().isEmpty()) {
+                    tcLabelAuto.setText(item.getEmvTc());
+                } else {
+                    tcFrameLayoutAuto.setVisibility(View.GONE);
+                }
             } else {
                 tcFrameLayoutAuto.setVisibility(View.GONE);
             }
-            if (item.getEmvAid().isEmpty()) {
-                aidLabelAuto.setText(item.getEmvAid());
+            if (item.getEmvAid() != null) {
+                if (item.getEmvAid().isEmpty()) {
+                    aidLabelAuto.setText(item.getEmvAid());
+                } else {
+                    aidFrameLayoutAuto.setVisibility(View.GONE);
+                }
             } else {
                 aidFrameLayoutAuto.setVisibility(View.GONE);
             }
