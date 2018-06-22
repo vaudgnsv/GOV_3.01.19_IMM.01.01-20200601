@@ -89,6 +89,12 @@ public class ReprintActivity extends SettingToolbarActivity {
     private RelativeLayout ref3RelativeLayout = null;
     private LinearLayout slipLinearLayout = null;
     private TextView sigatureLabel = null;
+    private TextView appLabel;
+    private FrameLayout appFrameLabel;
+    private TextView tcLabel;
+    private FrameLayout tcFrameLayout;
+    private TextView aidLabel;
+    private FrameLayout aidFrameLayout;
 
     /**
      * SETTLEMENT
@@ -229,6 +235,14 @@ public class ReprintActivity extends SettingToolbarActivity {
         sigatureLabel = printLastView.findViewById(R.id.sigatureLabel);
         typeInputCardLabel = printLastView.findViewById(R.id.typeInputCardLabel);
         comCodeFragment = printLastView.findViewById(R.id.comCodeFragment);
+
+        appLabel = printLastView.findViewById(R.id.appLabel);
+        appFrameLabel = printLastView.findViewById(R.id.appFrameLabel);
+        tcLabel = printLastView.findViewById(R.id.tcLabel);
+        tcFrameLayout = printLastView.findViewById(R.id.tcFrameLayout);
+        aidLabel = printLastView.findViewById(R.id.aidLabel);
+        aidFrameLayout = printLastView.findViewById(R.id.aidFrameLayout);
+
     }
 
     private void setMeasure() {
@@ -539,11 +553,44 @@ public class ReprintActivity extends SettingToolbarActivity {
                     feeThbLabel.setText(getString(R.string.slip_pattern_amount, "0.00"));
                     totThbLabel.setText(getString(R.string.slip_pattern_amount, "0.00"));
                 }
+                if (transTemp.getEmvAppLabel() != null) {
+                    if (!transTemp.getEmvAppLabel().isEmpty()) {
+                        appLabel.setText(transTemp.getEmvAppLabel());
+                    } else {
+                        appFrameLabel.setVisibility(View.GONE);
+                    }
+                } else {
+                    appFrameLabel.setVisibility(View.GONE);
+                }
+
+                if (transTemp.getEmvTc() != null) {
+                    if (!transTemp.getEmvTc().isEmpty()) {
+                        tcLabel.setText(transTemp.getEmvTc());
+                    } else {
+                        tcFrameLayout.setVisibility(View.GONE);
+                    }
+                } else {
+                    tcFrameLayout.setVisibility(View.GONE);
+                }
+                if (transTemp.getEmvAid() != null) {
+                    if (!transTemp.getEmvAid().isEmpty()) {
+                        aidLabel.setText(transTemp.getEmvAid());
+                    } else {
+                        aidFrameLayout.setVisibility(View.GONE);
+                    }
+                } else {
+                    aidFrameLayout.setVisibility(View.GONE);
+                }
             } else {
                 comCodeFragment.setVisibility(View.VISIBLE);
                 copyLabel.setText("**** สำเนาร้านค้า ****");
                 typeCopyLabel.setText("**** MERCHANT COPY ****");
                 nameEmvCardLabel.setText(transTemp.getEmvNameCardHolder().trim());
+
+                appFrameLabel.setVisibility(View.GONE);
+                tcFrameLayout.setVisibility(View.GONE);
+                aidFrameLayout.setVisibility(View.GONE);
+                taxLinearLayout.setVisibility(View.GONE);
 
                 taxLinearLayout.setVisibility(View.GONE);
                 if (transTemp.getEmciFree() != null) {
@@ -592,8 +639,43 @@ public class ReprintActivity extends SettingToolbarActivity {
                     feeThbLabel.setText(getString(R.string.slip_pattern_amount_void, "0.00"));
                     totThbLabel.setText(getString(R.string.slip_pattern_amount_void, "0.00"));
                 }
+
+                if (transTemp.getEmvAppLabel() != null) {
+                    if (!transTemp.getEmvAppLabel().isEmpty()) {
+                        appLabel.setText(transTemp.getEmvAppLabel());
+                    } else {
+                        appFrameLabel.setVisibility(View.GONE);
+                    }
+                } else {
+                    appFrameLabel.setVisibility(View.GONE);
+                }
+
+                if (transTemp.getEmvTc() != null) {
+                    if (!transTemp.getEmvTc().isEmpty()) {
+                        tcLabel.setText(transTemp.getEmvTc());
+                    } else {
+                        tcFrameLayout.setVisibility(View.GONE);
+                    }
+                } else {
+                    tcFrameLayout.setVisibility(View.GONE);
+                }
+                if (transTemp.getEmvAid() != null) {
+                    if (!transTemp.getEmvAid().isEmpty()) {
+                        aidLabel.setText(transTemp.getEmvAid());
+                    } else {
+                        aidFrameLayout.setVisibility(View.GONE);
+                    }
+                } else {
+                    aidFrameLayout.setVisibility(View.GONE);
+                }
+
             } else {
                 comCodeFragment.setVisibility(View.VISIBLE);
+                taxLinearLayout.setVisibility(View.GONE);
+
+                appFrameLabel.setVisibility(View.GONE);
+                tcFrameLayout.setVisibility(View.GONE);
+                aidFrameLayout.setVisibility(View.GONE);
                 taxLinearLayout.setVisibility(View.GONE);
 
                 copyLabel.setText("**** สำเนาร้านค้า ****");
@@ -760,11 +842,44 @@ public class ReprintActivity extends SettingToolbarActivity {
                     feeThbLabel.setText(getString(R.string.slip_pattern_amount, "0.00"));
                     totThbLabel.setText(getString(R.string.slip_pattern_amount, "0.00"));
                 }
+                if (transTemp.getEmvAppLabel() != null) {
+                    if (!transTemp.getEmvAppLabel().isEmpty()) {
+                        appLabel.setText(transTemp.getEmvAppLabel());
+                    } else {
+                        appFrameLabel.setVisibility(View.GONE);
+                    }
+                } else {
+                    appFrameLabel.setVisibility(View.GONE);
+                }
+
+                if (transTemp.getEmvTc() != null) {
+                    if (!transTemp.getEmvTc().isEmpty()) {
+                        tcLabel.setText(transTemp.getEmvTc());
+                    } else {
+                        tcFrameLayout.setVisibility(View.GONE);
+                    }
+                } else {
+                    tcFrameLayout.setVisibility(View.GONE);
+                }
+                if (transTemp.getEmvAid() != null) {
+                    if (!transTemp.getEmvAid().isEmpty()) {
+                        aidLabel.setText(transTemp.getEmvAid());
+                    } else {
+                        aidFrameLayout.setVisibility(View.GONE);
+                    }
+                } else {
+                    aidFrameLayout.setVisibility(View.GONE);
+                }
             } else {
                 comCodeFragment.setVisibility(View.VISIBLE);
                 copyLabel.setText("**** สำเนาร้านค้า ****");
                 typeCopyLabel.setText("**** MERCHANT COPY ****");
                 nameEmvCardLabel.setText(transTemp.getEmvNameCardHolder().trim());
+
+                appFrameLabel.setVisibility(View.GONE);
+                tcFrameLayout.setVisibility(View.GONE);
+                aidFrameLayout.setVisibility(View.GONE);
+                taxLinearLayout.setVisibility(View.GONE);
 
                 taxLinearLayout.setVisibility(View.GONE);
                 if (transTemp.getEmciFree() != null) {
@@ -813,8 +928,41 @@ public class ReprintActivity extends SettingToolbarActivity {
                     feeThbLabel.setText(getString(R.string.slip_pattern_amount_void, "0.00"));
                     totThbLabel.setText(getString(R.string.slip_pattern_amount_void, "0.00"));
                 }
+                if (transTemp.getEmvAppLabel() != null) {
+                    if (!transTemp.getEmvAppLabel().isEmpty()) {
+                        appLabel.setText(transTemp.getEmvAppLabel());
+                    } else {
+                        appFrameLabel.setVisibility(View.GONE);
+                    }
+                } else {
+                    appFrameLabel.setVisibility(View.GONE);
+                }
+
+                if (transTemp.getEmvTc() != null) {
+                    if (!transTemp.getEmvTc().isEmpty()) {
+                        tcLabel.setText(transTemp.getEmvTc());
+                    } else {
+                        tcFrameLayout.setVisibility(View.GONE);
+                    }
+                } else {
+                    tcFrameLayout.setVisibility(View.GONE);
+                }
+                if (transTemp.getEmvAid() != null) {
+                    if (!transTemp.getEmvAid().isEmpty()) {
+                        aidLabel.setText(transTemp.getEmvAid());
+                    } else {
+                        aidFrameLayout.setVisibility(View.GONE);
+                    }
+                } else {
+                    aidFrameLayout.setVisibility(View.GONE);
+                }
             } else {
                 comCodeFragment.setVisibility(View.VISIBLE);
+                taxLinearLayout.setVisibility(View.GONE);
+
+                appFrameLabel.setVisibility(View.GONE);
+                tcFrameLayout.setVisibility(View.GONE);
+                aidFrameLayout.setVisibility(View.GONE);
                 taxLinearLayout.setVisibility(View.GONE);
 
                 copyLabel.setText("**** สำเนาร้านค้า ****");

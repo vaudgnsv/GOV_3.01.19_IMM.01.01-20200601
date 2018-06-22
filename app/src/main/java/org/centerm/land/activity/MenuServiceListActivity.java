@@ -281,9 +281,35 @@ public class MenuServiceListActivity extends SettingToolbarActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        dialogCheckCard.dismiss();
+                        dialogFallBack.dismiss();
                         dialogWaiting.show();
                         setTimer(2000, 1);
                         dialogInsertCard.dismiss();
+                    }
+                });
+            }
+
+            @Override
+            public void onTansAbort() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!isFinishing()) {
+                            if (!dialogCheckCard.isShowing()) {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(MenuServiceListActivity.this);
+                                builder.setMessage("อ่านการ์ดล้มเหลว")
+                                        .setIcon(android.R.drawable.ic_dialog_alert)
+                                        .setCancelable(false)
+                                        .setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dismissDialogAll();
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
+                            }
+                        }
                     }
                 });
             }
@@ -687,10 +713,8 @@ public class MenuServiceListActivity extends SettingToolbarActivity {
             @Override
             public void onClick(View v) {
                 dialogCheckCard.dismiss();
-                dialogFallBack.show();
-                setTimer(15000, 1);
-                cardManager.startTransaction(CardManager.SALE);
-//                                        tg.stopTone();
+//                setTimer(15000, 1);
+                dismissDialogAll();
                 mp.stop();
                 mp.release();
                 mp = null;

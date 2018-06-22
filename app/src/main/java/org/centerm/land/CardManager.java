@@ -700,53 +700,55 @@ public class CardManager {
         if (HOST_CARD.equals("EPS")) {
             Log.d(TAG, "tagOf55List EPS Start: ");
             tagOf55List = new ArrayList<String>();
-            tagOf55List.add("82");
-            tagOf55List.add("84");
-            tagOf55List.add("95");
-            tagOf55List.add("9A");
-            tagOf55List.add("9C");
-            tagOf55List.add("5F2A"); // Currency code
-//                                    tagOf55List.add("5F30");
-            tagOf55List.add("5F34"); // KTB OPTIONAL
-            tagOf55List.add("9F02");
-            tagOf55List.add("9F03");
-//                                    tagOf55List.add(tag9f06);
-            tagOf55List.add("9F09");
-            tagOf55List.add("9F10");
-            tagOf55List.add("9F1A"); // Country code
-            tagOf55List.add("9F1E");
-            tagOf55List.add("9F26");
-            tagOf55List.add("9F27");
-            tagOf55List.add("9F33");
-            tagOf55List.add("9F34");
-            tagOf55List.add("9F35");
-            tagOf55List.add("9F36");
-            tagOf55List.add("9F37");
-            tagOf55List.add("9F41");
+            tagOf55List.add("82");      // Source from ICC
+            tagOf55List.add("84");      // Source from ICC ;UL Recommended
+            tagOf55List.add("95");      // Source from Terminal
+            tagOf55List.add("9A");      // Source from Terminal
+            tagOf55List.add("9C");      // Source from Terminal
+            tagOf55List.add("5F2A");    // Currency code
+            tagOf55List.add("5F30");    // Currency code
+            tagOf55List.add("5F34");    // Source from ICC
+            tagOf55List.add("9F02");    // Source from Terminal
+            tagOf55List.add("9F03");    // Source from Terminal
+            tagOf55List.add("9F09");    // Source from Terminal
+            tagOf55List.add("9F10");    // Source from ICC
+            tagOf55List.add("9F1A");    // Source from Terminal; Country code
+            tagOf55List.add("9F1E");    // Source from Terminal
+            tagOf55List.add("9F26");    // Source from ICC
+            tagOf55List.add("9F27");    // Source from ICC
+            tagOf55List.add("9F33");    // Source from Terminal
+            tagOf55List.add("9F34");    // Source from Terminal
+            tagOf55List.add("9F35");    // Source from Terminal
+            tagOf55List.add("9F36");    // Source from ICC
+            tagOf55List.add("9F37");    // Source from Terminal
+            tagOf55List.add("9F41");    // Source from Terminal
 
             Log.d(TAG, "tagOf55List EPS End: ");
         } else {
             tagOf55List = new ArrayList<String>();
             //tagOf55List.add("5F24"); // Expiry
-            tagOf55List.add("5F2A"); // Currency code
-            tagOf55List.add("5F34"); // KTB OPTIONAL
-            tagOf55List.add("82");
-            tagOf55List.add("95");
-            tagOf55List.add("9A");
-            tagOf55List.add("9C");
-            tagOf55List.add("9F02");
-            tagOf55List.add("9F03");
-
-            //too long to received for master card
-            tagOf55List.add("9F10");
-            tagOf55List.add("9F1A"); // Country code
-            tagOf55List.add("9F1E");
-            tagOf55List.add("9F26");
-            tagOf55List.add("9F27");
-            tagOf55List.add("9F33");
-            tagOf55List.add("9F34");
-            tagOf55List.add("9F36");
-            tagOf55List.add("9F37");
+            tagOf55List.add("82");      // Source from ICC
+            tagOf55List.add("84");      // Source from ICC ;UL Recommended
+            tagOf55List.add("95");      // Source from Terminal
+            tagOf55List.add("9A");      // Source from Terminal
+            tagOf55List.add("9C");      // Source from Terminal
+            tagOf55List.add("5F2A");    // Currency code
+            tagOf55List.add("5F30");    // Currency code
+            tagOf55List.add("5F34");    // Source from ICC
+            tagOf55List.add("9F02");    // Source from Terminal
+            tagOf55List.add("9F03");    // Source from Terminal
+            tagOf55List.add("9F09");    // Source from Terminal
+            tagOf55List.add("9F10");    // Source from ICC
+            tagOf55List.add("9F1A");    // Source from Terminal; Country code
+            tagOf55List.add("9F1E");    // Source from Terminal
+            tagOf55List.add("9F26");    // Source from ICC
+            tagOf55List.add("9F27");    // Source from ICC
+            tagOf55List.add("9F33");    // Source from Terminal
+            tagOf55List.add("9F34");    // Source from Terminal
+            tagOf55List.add("9F35");    // Source from Terminal
+            tagOf55List.add("9F36");    // Source from ICC
+            tagOf55List.add("9F37");    // Source from Terminal
+            tagOf55List.add("9F41");    // Source from Terminal
         }
     }
 
@@ -1033,6 +1035,9 @@ public class CardManager {
                             Log.d(TAG, "pboc_trans_abort");
                             tempSavedAllData = readKernelData(EMVTAGS.getF55Taglist());
                             processCallback(PROCESS_TRANS_RESULT_ABORT);
+                            if (cardHelperListener != null) {
+                                cardHelperListener.onTansAbort();
+                            }
                             if (transResultAbortLister != null) {
                                 transResultAbortLister.onTransResultAbort();
                             }
@@ -4863,6 +4868,8 @@ public class CardManager {
         public void onSwipeCardFail();
 
         public void onFindICCard();
+
+        public void onTansAbort();
     }
 
     public interface InsertOrUpdateDatabase {

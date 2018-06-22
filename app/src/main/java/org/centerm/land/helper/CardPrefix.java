@@ -68,6 +68,11 @@ public class CardPrefix {
             Log.d(TAG, "getTypeCard: TMS");
             return "TMS";
         }
+        cardSubstring = cardNo.substring(0, 6);
+        if (cardSubstring.equals("522230")) {
+            Log.d(TAG, "getTypeCard: TMS");
+            return "TMS";
+        }
         cardSubstring = cardNo.substring(0, 3);
         if (cardSubstring.equals("621")) {
             Log.d(TAG, "getTypeCard: EPS");
@@ -174,6 +179,11 @@ public class CardPrefix {
 
         cardSubstring = cardNo.substring(0, 6);
         if (cardSubstring.equals("990006")) {
+            Log.d(TAG, "getTypeCard: TMS");
+            return "TMS";
+        }
+        cardSubstring = cardNo.substring(0, 6);
+        if (cardSubstring.equals("522230")) {
             Log.d(TAG, "getTypeCard: TMS");
             return "TMS";
         }
@@ -286,6 +296,11 @@ public class CardPrefix {
         if (cardSubstring.equals("990006")) {
             Log.d(TAG, "getTypeCard: TMS");
             return "ATM Thai Std";
+        }
+        cardSubstring = cardNo.substring(0, 6);
+        if (cardSubstring.equals("522230")) {
+            Log.d(TAG, "getTypeCard: TMS");
+            return "KTB MASTER";
         }
         cardSubstring = cardNo.substring(0, 3);
         if (cardSubstring.equals("621")) {
@@ -407,6 +422,12 @@ public class CardPrefix {
             return Preference.getInstance(context).getValueString(Preference.KEY_NII_TMS);    // Paul_20180523
 //            return "0242";
         }
+        cardSubstring = cardNo.substring(0, 6);
+        if (cardSubstring.equals("522230")) {
+            Log.d(TAG, "getTypeCard: TMS");
+            return Preference.getInstance(context).getValueString(Preference.KEY_NII_TMS);    // Paul_20180523;
+        }
+
         Log.d(TAG, "getTypeCard: POS");
         cardSubstring = cardNo.substring(0, 3);
         if (cardSubstring.equals("621")) {

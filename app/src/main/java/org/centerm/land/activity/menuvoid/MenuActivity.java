@@ -293,6 +293,11 @@ public class MenuActivity extends SettingToolbarActivity {
     protected void onStop() {
         super.onStop();
         realm.close();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
         cardManager.removeReversalListener();
         cardManager.removeResponseCodeListener();
     }

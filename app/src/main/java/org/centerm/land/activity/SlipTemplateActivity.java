@@ -443,7 +443,7 @@ public class SlipTemplateActivity extends SettingToolbarActivity implements View
             tcLabel.setText(item.getEmvTc());
             aidLabel.setText(item.getEmvAid());*/
             if (item.getEmvAppLabel() != null) {
-                if (item.getEmvAppLabel().isEmpty()) {
+                if (!item.getEmvAppLabel().isEmpty()) {
                     appLabel.setText(item.getEmvAppLabel());
                 } else {
                     appFrameLabel.setVisibility(View.GONE);
@@ -453,7 +453,7 @@ public class SlipTemplateActivity extends SettingToolbarActivity implements View
             }
 
             if (item.getEmvTc() != null) {
-                if (item.getEmvTc().isEmpty()) {
+                if (!item.getEmvTc().isEmpty()) {
                     tcLabel.setText(item.getEmvTc());
                 } else {
                     tcFrameLayout.setVisibility(View.GONE);
@@ -462,7 +462,7 @@ public class SlipTemplateActivity extends SettingToolbarActivity implements View
                 tcFrameLayout.setVisibility(View.GONE);
             }
             if (item.getEmvAid() != null) {
-                if (item.getEmvAid().isEmpty()) {
+                if (!item.getEmvAid().isEmpty()) {
                     aidLabel.setText(item.getEmvAid());
                 } else {
                     aidFrameLayout.setVisibility(View.GONE);
@@ -644,7 +644,7 @@ public class SlipTemplateActivity extends SettingToolbarActivity implements View
             timeTaxLayoutAuto.setText(item.getTransTime());*/
 
             if (item.getEmvAppLabel() != null) {
-                if (item.getEmvAppLabel().isEmpty()) {
+                if (!item.getEmvAppLabel().isEmpty()) {
                     appLabelAuto.setText(item.getEmvAppLabel());
                 } else {
                     appFrameLabelAuto.setVisibility(View.GONE);
@@ -653,7 +653,7 @@ public class SlipTemplateActivity extends SettingToolbarActivity implements View
                 appFrameLabelAuto.setVisibility(View.GONE);
             }
             if (item.getEmvTc() != null) {
-                if (item.getEmvTc().isEmpty()) {
+                if (!item.getEmvTc().isEmpty()) {
                     tcLabelAuto.setText(item.getEmvTc());
                 } else {
                     tcFrameLayoutAuto.setVisibility(View.GONE);
@@ -662,7 +662,7 @@ public class SlipTemplateActivity extends SettingToolbarActivity implements View
                 tcFrameLayoutAuto.setVisibility(View.GONE);
             }
             if (item.getEmvAid() != null) {
-                if (item.getEmvAid().isEmpty()) {
+                if (!item.getEmvAid().isEmpty()) {
                     aidLabelAuto.setText(item.getEmvAid());
                 } else {
                     aidFrameLayoutAuto.setVisibility(View.GONE);
