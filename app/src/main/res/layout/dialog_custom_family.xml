@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/closeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:background="@android:color/white"
+        android:src="@drawable/cancel2_128x128" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/closeImage"
+        android:layout_margin="30dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/familyBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/pressed_menu"
+            android:fontFamily="@font/microsoft_sans_serif"
+            android:text="สิทธิตนเองและครอบครัว"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/minSevenBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/pressed_menu"
+            android:fontFamily="@font/microsoft_sans_serif"
+            android:text="สิทธิบุตร 0 - 7 ปี"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/foreignerBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/pressed_menu"
+            android:fontFamily="@font/microsoft_sans_serif"
+            android:text="สิทธิบุคคลต่างชาติ"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+        <Button
+            android:id="@+id/noCardBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/pressed_menu"
+            android:fontFamily="@font/microsoft_sans_serif"
+            android:text="ไม่มีบัตร / บัตรเสีย"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

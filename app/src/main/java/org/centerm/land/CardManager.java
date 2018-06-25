@@ -22,6 +22,7 @@ import com.centerm.smartpos.aidl.pboc.PBOCListener;
 import com.centerm.smartpos.aidl.pboc.ParcelableTrackData;
 import com.centerm.smartpos.aidl.printer.AidlPrinter;
 import com.centerm.smartpos.aidl.qrscan.AidlQuickScanZbar;
+import com.centerm.smartpos.aidl.serialport.AidlSerialPort;
 import com.centerm.smartpos.aidl.sys.AidlDeviceManager;
 import com.centerm.smartpos.aidl.sys.AidlSystemSettingService;
 import com.centerm.smartpos.constant.Constant;
@@ -102,6 +103,10 @@ public class CardManager {
     private AidlDeviceManager managerTle = null;
     private AidlPrinter printDev;
     private AidlQuickScanZbar aidlQuickScanService = null;
+
+
+    private AidlSerialPort serialport1;       // Paul_20180618
+    private AidlSerialPort serialport2;       // Paul_20180618
 
     /**
      * DATA_TO_SEND_TPDU
@@ -204,6 +209,26 @@ public class CardManager {
             Log.d(TAG, "Tle服务绑定失败");
         }
     };
+
+    // Paul_20180623 Start
+    public AidlSerialPort
+    getInstancesSerial1() {
+
+        if (serialport1 != null) {
+            return serialport1;
+        }
+        return null;
+    }
+
+    public AidlSerialPort
+    getInstancesSerial2() {
+
+        if (serialport2 != null) {
+            return serialport2;
+        }
+        return null;
+    }
+    // Paul_20180623 End
 
     public void bindService() {
         Intent intent = new Intent();
@@ -417,7 +442,8 @@ public class CardManager {
         try {
             pboc2 = AidlEMVL2.Stub.asInterface(manager.getDevice(Constant.DEVICE_TYPE.DEVICE_TYPE_PBOC2));
             printDev = AidlPrinter.Stub.asInterface(manager.getDevice(Constant.DEVICE_TYPE.DEVICE_TYPE_PRINTERDEV));
-
+            serialport1 = AidlSerialPort.Stub.asInterface(manager.getDevice(Constant.DEVICE_TYPE.DEVICE_TYPE_SERIALPORT1));
+            serialport2 = AidlSerialPort.Stub.asInterface(manager.getDevice(Constant.DEVICE_TYPE.DEVICE_TYPE_SERIALPORT2));
         } catch (RemoteException e) {
             e.printStackTrace();
         }

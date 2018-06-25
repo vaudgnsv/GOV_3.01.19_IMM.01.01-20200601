@@ -1,6 +1,7 @@
 package org.centerm.land;
 
 import android.app.Application;
+import android.util.Log;
 
 import org.centerm.land.manager.Contextor;
 import org.centerm.land.utility.Preference;
@@ -14,6 +15,7 @@ import io.realm.RealmConfiguration;
 
 public class MainApplication extends Application {
     private static CardManager cardManager;
+    private final String TAG = "MainApplication";
 
     @Override
     public void onCreate() {
@@ -68,6 +70,8 @@ public class MainApplication extends Application {
         setTpdu();
 
         setInvoice();
+
+        setMessageGHCVersion();
 
     }
 
@@ -161,6 +165,7 @@ public class MainApplication extends Application {
         String terIdPOS = Preference.getInstance(this).getValueString(Preference.KEY_TERMINAL_ID_POS);
         String terIdTMS = Preference.getInstance(this).getValueString(Preference.KEY_TERMINAL_ID_TMS);
         String terIdEPS = Preference.getInstance(this).getValueString(Preference.KEY_TERMINAL_ID_EPS);
+        String terIdGHC = Preference.getInstance(this).getValueString(Preference.KEY_TERMINAL_ID_GHC);  // Paul_20180620
 
         if (terIdPOS.isEmpty()) {
             Preference.getInstance(this).setValueString(Preference.KEY_TERMINAL_ID_POS, "61900010");
@@ -170,6 +175,9 @@ public class MainApplication extends Application {
         }
         if (terIdEPS.isEmpty()) {
             Preference.getInstance(this).setValueString(Preference.KEY_TERMINAL_ID_EPS, "31900010");
+        }
+        if (terIdGHC.isEmpty()) {       // Paul_20180620
+            Preference.getInstance(this).setValueString(Preference.KEY_TERMINAL_ID_GHC, "40110003");
         }
     }
 
@@ -209,6 +217,7 @@ public class MainApplication extends Application {
         String merchantIdPOS = Preference.getInstance(this).getValueString(Preference.KEY_MERCHANT_ID_POS);
         String merchantIdTMS = Preference.getInstance(this).getValueString(Preference.KEY_MERCHANT_ID_POS);
         String merchantIdEPS = Preference.getInstance(this).getValueString(Preference.KEY_MERCHANT_ID_POS);
+        String merchantIdGHC = Preference.getInstance(this).getValueString(Preference.KEY_MERCHANT_ID_GHC); // Paul_20180620
 
         if (merchantIdPOS.isEmpty()) {
             Preference.getInstance(this).setValueString(Preference.KEY_MERCHANT_ID_POS, "000001000900003");
@@ -218,6 +227,9 @@ public class MainApplication extends Application {
         }
         if (merchantIdEPS.isEmpty()) {
             Preference.getInstance(this).setValueString(Preference.KEY_MERCHANT_ID_EPS, "000001000900003");
+        }
+        if (merchantIdGHC.isEmpty()) {  // Paul_20180620
+            Preference.getInstance(this).setValueString(Preference.KEY_MERCHANT_ID_GHC, "000010040110000");
         }
     }
 
@@ -248,7 +260,7 @@ public class MainApplication extends Application {
         String niiPOS = Preference.getInstance(this).getValueString(Preference.KEY_NII_POS);
         String niiTMS = Preference.getInstance(this).getValueString(Preference.KEY_NII_TMS);
         String niiEPS = Preference.getInstance(this).getValueString(Preference.KEY_NII_EPS);
-
+        String niiGHC = Preference.getInstance(this).getValueString(Preference.KEY_NII_GHC);    // Paul_20180620
 
         if (niiPOS.isEmpty()) {
             Preference.getInstance(this).setValueString(Preference.KEY_NII_POS, "0245");
@@ -259,12 +271,16 @@ public class MainApplication extends Application {
         if (niiEPS.isEmpty()) {
             Preference.getInstance(this).setValueString(Preference.KEY_NII_EPS, "0242");
         }
+        if (niiGHC.isEmpty()) { // Paul_20180620
+            Preference.getInstance(this).setValueString(Preference.KEY_NII_GHC, "0444");
+        }
     }
 
     private void setTpdu() {
         String tpduPOS = Preference.getInstance(this).getValueString(Preference.KEY_TPDU_POS);
         String tpduTMS = Preference.getInstance(this).getValueString(Preference.KEY_TPDU_TMS);
         String tpduEPS = Preference.getInstance(this).getValueString(Preference.KEY_TPDU_EPS);
+        String tpduGHC = Preference.getInstance(this).getValueString(Preference.KEY_TPDU_GHC);  // Paul_20180620
 
         if (tpduPOS.isEmpty()) {
             Preference.getInstance(this).setValueString(Preference.KEY_TPDU_POS, "6002450000");
@@ -274,6 +290,9 @@ public class MainApplication extends Application {
         }
         if (tpduEPS.isEmpty()) {
             Preference.getInstance(this).setValueString(Preference.KEY_TPDU_EPS, "6002420000");
+        }
+        if (tpduGHC.isEmpty()) {    // Paul_20180620
+            Preference.getInstance(this).setValueString(Preference.KEY_TPDU_GHC, "6004440003");
         }
     }
 
@@ -294,6 +313,18 @@ public class MainApplication extends Application {
             invoiceNumber = "1";
             Preference.getInstance(this).setValueString(Preference.KEY_INVOICE_NUMBER_EPS, invoiceNumber);
         }
+        if (Preference.getInstance(this).getValueString(Preference.KEY_INVOICE_NUMBER_GHC).isEmpty()) {
+            invoiceNumber = "1";
+            Preference.getInstance(this).setValueString(Preference.KEY_INVOICE_NUMBER_GHC, invoiceNumber);
+        }
+    }
+
+    // Paul_20180620
+    private void setMessageGHCVersion() {
+        String messageVersion = Preference.getInstance(this).getValueString(Preference.KEY_MESSAGE_GHC_VERSION);
+        if (messageVersion.isEmpty()) {
+            Preference.getInstance(this).setValueString(Preference.KEY_MESSAGE_GHC_VERSION, "0008");
+        }
     }
 
     public static CardManager getCardManager() {
@@ -303,6 +334,7 @@ public class MainApplication extends Application {
     @Override
     public void onTerminate() {
         super.onTerminate();
+        Log.d(TAG, "onTerminate: ");
         cardManager.unbindService();
     }
 }

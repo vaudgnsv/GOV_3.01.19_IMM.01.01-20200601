@@ -133,6 +133,26 @@ public class Preference {
 
     public static final String KEY_POS_ID = Preference.class.getName() + "key_pos_id";
 
+
+    public static final String KEY_TRACE_NO_GHC = Preference.class.getName() +"key_trace_no_ghc"; // Paul_20180620
+
+    public static final String KEY_BATCH_NUMBER_GHC = Preference.class.getName() +"key_batch_number_ghc"; // Paul_20180620 //mBlockData 60
+    public static final String KEY_INVOICE_NUMBER_GHC = Preference.class.getName() +"key_invoice_number_ghc"; // Paul_20180620 //mBlockData 62
+    public static final String KEY_TERMINAL_ID_GHC = Preference.class.getName() + "key_terminal_id_ghc"; // Paul_20180620
+    public static final String KEY_MERCHANT_ID_GHC = Preference.class.getName() + "key_merchant_id_ghc";    // Paul_20180620
+    public static final String KEY_MESSAGE_GHC_VERSION = Preference.class.getName() + "key_message_ghc_version";
+    public static final String KEY_NII_GHC = Preference.class.getName() + "key_nii_ghc";    // Paul_20180620
+    public static final String KEY_TPDU_GHC = Preference.class.getName() + "key_tpdu_ghc";  // Paul_20180620
+
+    public static final String KEY_TAG_1000_HC = Preference.class.getName() + "key_tag_1000_hc";
+    public static final String KEY_TAG_1001_HC = Preference.class.getName() + "key_tag_1001_hc";
+    public static final String KEY_TAG_1002_HC = Preference.class.getName() + "key_tag_1002_hc";
+    public static final String KEY_TAG_1003_HC = Preference.class.getName() + "key_tag_1003_hc";
+    public static final String KEY_TAG_1004_HC = Preference.class.getName() + "key_tag_1004_hc";
+    public static final String KEY_TAG_1005_HC = Preference.class.getName() + "key_tag_1005_hc";
+    public static final String KEY_TAG_1006_HC = Preference.class.getName() + "key_tag_1006_hc";
+    public static final String KEY_TAG_1007_HC = Preference.class.getName() + "key_tag_1007_hc";
+
     private static Preference settingPreference = null;
     private final String preferenceName = BuildConfig.APPLICATION_ID + "Setting";
     private SharedPreferences preference = null;

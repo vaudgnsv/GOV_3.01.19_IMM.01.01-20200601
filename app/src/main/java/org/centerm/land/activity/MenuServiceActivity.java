@@ -32,6 +32,7 @@ import org.centerm.land.activity.qr.MenuQrActivity;
 import org.centerm.land.activity.settlement.MenuSettlementActivity;
 import org.centerm.land.fragment.MenuServiceFragment;
 import org.centerm.land.R;
+import org.centerm.land.healthcare.activity.HealthCareActivity;
 import org.centerm.land.utility.Preference;
 import org.centerm.land.utility.Utility;
 import org.json.JSONException;
@@ -72,6 +73,9 @@ public class MenuServiceActivity extends AppCompatActivity {
 
     private AidlSystemSettingService aidlSystemSettingService = null;
     private AlertDialog.Builder builder;
+
+
+    private LinearLayout healthCareLinearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +131,18 @@ public class MenuServiceActivity extends AppCompatActivity {
         customDialogPassword();
         customDialogHost();
         setDialog();
+        healthCareLinearLayout = findViewById(R.id.healthCareLinearLayout);
+        healthCareLinearLayout.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( MenuServiceActivity.this, HealthCareActivity.class );
+                startActivity( intent );
+                overridePendingTransition( 0,0 );
+//                Intent intent = new Intent(MenuServiceActivity.this, IDActivity.class);
+//                startActivity(intent);
+//                overridePendingTransition(0, 0);
+            }
+        } );
 
     }
 

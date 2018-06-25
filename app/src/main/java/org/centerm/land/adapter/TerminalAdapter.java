@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import org.centerm.land.fragment.terminal.TerminalEPSFragment;
+import org.centerm.land.fragment.terminal.TerminalHealthCareFragment;
 import org.centerm.land.fragment.terminal.TerminalPOSFragment;
 import org.centerm.land.fragment.terminal.TerminalTMSFragment;
 
@@ -24,6 +25,8 @@ public class TerminalAdapter extends FragmentStatePagerAdapter {
                 return TerminalTMSFragment.newInstance();
             case 2:
                 return TerminalEPSFragment.newInstance();
+            case 3:
+                return TerminalHealthCareFragment.newInstance();
             default:
                 return TerminalPOSFragment.newInstance();
         }
@@ -36,7 +39,7 @@ public class TerminalAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
     @Nullable
@@ -49,6 +52,8 @@ public class TerminalAdapter extends FragmentStatePagerAdapter {
                 return "TMS";
             case 2:
                 return "EPS";
+            case 3:
+                return "HC";
             default:
                 return "POS";
         }

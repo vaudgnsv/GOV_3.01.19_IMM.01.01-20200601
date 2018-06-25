@@ -317,6 +317,8 @@ public class CardPrefix {
             invoiceNumber = Preference.getInstance(context).getValueString(Preference.KEY_INVOICE_NUMBER_POS);
         } else if (typeCard.equalsIgnoreCase("TMS")) {
             invoiceNumber = Preference.getInstance(context).getValueString(Preference.KEY_INVOICE_NUMBER_TMS);
+        } else if (typeCard.equalsIgnoreCase("GHC")) {  // Paul_20180620
+            invoiceNumber = Preference.getInstance(context).getValueString(Preference.KEY_INVOICE_NUMBER_GHC);
         } else {
             invoiceNumber = Preference.getInstance(context).getValueString(Preference.KEY_INVOICE_NUMBER_EPS);
         }
@@ -330,6 +332,8 @@ public class CardPrefix {
             terminalId = Preference.getInstance(context).getValueString(Preference.KEY_TERMINAL_ID_POS);
         } else if (typeCard.equalsIgnoreCase("TMS")) {
             terminalId = Preference.getInstance(context).getValueString(Preference.KEY_TERMINAL_ID_TMS);
+        }  else if (typeCard.equalsIgnoreCase("GHC")) {     // Paul_20180620
+            terminalId = Preference.getInstance(context).getValueString(Preference.KEY_TERMINAL_ID_GHC);
         } else {
             terminalId = Preference.getInstance(context).getValueString(Preference.KEY_TERMINAL_ID_EPS);
         }
@@ -343,6 +347,8 @@ public class CardPrefix {
             merchantId = Preference.getInstance(context).getValueString(Preference.KEY_MERCHANT_ID_POS);
         } else if (typeCard.equalsIgnoreCase("TMS")) {
             merchantId = Preference.getInstance(context).getValueString(Preference.KEY_MERCHANT_ID_TMS);
+        } else if (typeCard.equalsIgnoreCase("GHC")) {  // Paul_20180620
+            merchantId = Preference.getInstance(context).getValueString(Preference.KEY_MERCHANT_ID_GHC);
         } else {
             merchantId = Preference.getInstance(context).getValueString(Preference.KEY_MERCHANT_ID_EPS);
         }
@@ -372,6 +378,8 @@ public class CardPrefix {
             traceIdNo = String.valueOf(Integer.valueOf(Preference.getInstance(context).getValueString(Preference.KEY_TRACE_NO_EPS)));
         } else if (typeCard.equalsIgnoreCase("TMS")) {
             traceIdNo = String.valueOf(Integer.valueOf(Preference.getInstance(context).getValueString(Preference.KEY_TRACE_NO_TMS)));
+        } else if (typeCard.equalsIgnoreCase("GHC")) {
+            traceIdNo = String.valueOf(Integer.valueOf(Preference.getInstance(context).getValueString(Preference.KEY_TRACE_NO_GHC)));
         }
         Log.d(TAG, "geTraceId traceIdNo: " + traceIdNo);
         return traceIdNo;
@@ -446,6 +454,8 @@ public class CardPrefix {
             batchNumber = Preference.getInstance(context).getValueString(Preference.KEY_BATCH_NUMBER_EPS);
         } else if (typeCard.equalsIgnoreCase("TMS")) {
             batchNumber = Preference.getInstance(context).getValueString(Preference.KEY_BATCH_NUMBER_TMS);
+        } else if (typeCard.equalsIgnoreCase("GHC")) {
+            batchNumber = Preference.getInstance(context).getValueString(Preference.KEY_BATCH_NUMBER_GHC);
         }
         Log.d(TAG, "getBatch batchNumber: " + batchNumber);
         return batchNumber;
@@ -459,7 +469,9 @@ public class CardPrefix {
             TPDU = Preference.getInstance(context).getValueString(Preference.KEY_TPDU_EPS);
         } else if (typeCard.equalsIgnoreCase("TMS")) {
             TPDU = Preference.getInstance(context).getValueString(Preference.KEY_TPDU_TMS);
-        }
+        } else if (typeCard.equalsIgnoreCase("GHC")) {
+        TPDU = Preference.getInstance(context).getValueString(Preference.KEY_TPDU_GHC);
+    }
         return TPDU;
     }
 

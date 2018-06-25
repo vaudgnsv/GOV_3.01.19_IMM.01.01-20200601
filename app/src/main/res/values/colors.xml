@@ -6,4 +6,5 @@
     <color name="color_background">#91c1d6</color>
     <color name="color_toolbar">#aadddddd</color>
     <color name="color_btn_background">#04113a</color>
+    <color name="color_toolbar_health">#3F51B5</color>
 </resources>

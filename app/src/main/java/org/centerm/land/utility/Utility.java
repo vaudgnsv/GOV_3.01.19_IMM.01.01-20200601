@@ -190,6 +190,14 @@ public class Utility {
         return combined;
     }
 
+    public static String getLength62(String slength62) {
+        StringBuilder length = new StringBuilder();
+        for (int i = slength62.length(); i < 4; i++) {
+            length.append("0");
+        }
+        return length + slength62;
+    }
+
     public static String CheckSumCrcCCITT(String SourceString) {
         String OutString = null;
         int crc = 0xffff;
@@ -215,6 +223,97 @@ public class Utility {
         }
         System.out.printf("utility:: CheckSumCrcCCITT AAAAAAAAAAAAAAA  %s \n", OutString);
         return OutString;
+    }
+
+
+    // Paul_20180624
+    public static int JavaHexDump(byte[] s, int len )
+    {
+        int i,j, quota=(len/16),remainder=(len%16);
+        int ii;
+//        byte[] TempBuf = new byte[100+1];
+//        byte[] TempBuf1 = new byte[50+1];
+
+        System.out.printf("utility:: Offset  Hex Value                                        Ascii value\n");
+        j = 0;
+        for(ii=0;ii<quota;ii++)
+        {
+            System.out.printf("utility:: 0x%04X  ",j);
+            for (i=0; i<16; i++){
+                System.out.printf("%02X ",s[i+j]);
+            }
+            System.out.print(" ");
+            for (i=0; i<16; i++){
+                if((s[i+j] >= 0x20) && (s[i+j] < 0x80)) {
+                    System.out.printf("%c",s[i+j]);
+                }
+                else
+                {
+                    System.out.printf(".");
+                }
+            }
+            j += 16;
+            System.out.printf("\n");
+        }
+        if (remainder != 0)
+        {
+            System.out.printf("utility:: 0x%04X  ",j);
+
+            for (i=0; i<remainder; i++){
+                System.out.printf("%02X ",s[i+j]);
+            }
+            for (i=0; i<(16-remainder); i++){
+                System.out.printf("   ");
+            }
+            System.out.printf(" ");
+            for (i=0; i<remainder; i++){
+                if((s[i+j] >= 0x20) && (s[i+j] < 0x80)) {
+                    System.out.printf("%c",s[i+j]);
+                }
+                else
+                {
+                    System.out.printf(".");
+                }
+            }
+            for (i=0; i<(16-remainder); i++){
+                System.out.printf(" ");
+            }
+            System.out.printf("\n");
+        }
+        return 0;
+    }
+
+    // Paul_20180624
+    public static int BCDtoInt(byte FirstByte,byte SecondByte)
+    {
+        int Returnint=0;
+
+        Returnint = (((FirstByte & (byte) 0xF0) >> 4) * 1000) + ((FirstByte & (byte) 0x0F) * 100) + (((SecondByte & (byte) 0xF0) >> 4) * 10) + ((SecondByte & (byte) 0x0F));
+        return Returnint;
+    }
+
+    // Paul_20180624
+    public static byte[] IntToBCD(int iLen)
+    {
+        int i;
+        int op;
+        int iiLen;
+        byte[] dst = new byte[2];
+
+        op = 1000;
+        for(i=0;i<2;i++)
+        {
+            iiLen = iLen/op;
+            iLen %= op;
+            op /= 10;
+            dst[i] = (byte)((iiLen << 4) & (byte)0xF0);
+
+            iiLen = iLen/op;
+            iLen %= op;
+            op /= 10;
+            dst[i] |= (iiLen & 0x0F);
+        }
+        return dst;
     }
 
     public interface OnClickCloseImage {

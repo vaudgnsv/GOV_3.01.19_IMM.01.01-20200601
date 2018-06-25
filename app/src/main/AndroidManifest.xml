@@ -126,7 +126,7 @@
         <activity android:name=".activity.qr.CheckQrActivity" />
         <activity android:name=".activity.MenuDetailReportActivity" />
         <activity android:name=".activity.ReprintActivity" />
-        <activity android:name=".activity.PrintPreviousActivity"></activity>
+        <activity android:name=".activity.PrintPreviousActivity"/>
 
         <receiver android:name=".service.BootBroadcastReceiver" >
             <intent-filter>
@@ -134,6 +134,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".healthcare.activity.HealthCareActivity" />
+        <activity android:name=".healthcare.activity.MedicalTreatmentActivity" />
+        <activity android:name=".healthcare.activity.CalculateHelthCareActivity" />
+        <activity android:name=".healthcare.activity.SlipTemplateHealthCareActivity" />
+        <activity android:name=".healthcare.activity.healthcarevoid.VoidHealthCareActivity"></activity>
     </application>
 
 </manifest>
